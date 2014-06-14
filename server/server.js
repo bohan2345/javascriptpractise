@@ -25,6 +25,7 @@ var router = express.Router();
 router.use(function(req, res, next) {
     // do logging
     console.log('Something is happening.');
+    res.header('Access-Control-Allow-Origin', "*");
     next();
     // make sure we go to the next routes and don't stop here
 });
@@ -47,7 +48,9 @@ router.route('/bears')
     var bear = new Bear();
     // create a new instance of the Bear model
     bear.name = req.body.name;
-    // set the bears name (comes from the request)
+    bear.HP = req.body.HP;
+    bear.attack = req.body.attack;
+    // set the bears attr (comes from the request)
 
     // save the bear and check for errors
     bear.save(function(err) {
@@ -106,8 +109,7 @@ router.route('/bears/:bear_id')
     });
 })
 // delete the bear with this id (accessed at DELETE http://localhost:8080/api/bears/:bear_id)
-.
-delete (function(req, res) {
+.delete (function(req, res) {
     Bear.remove({
         _id : req.params.bear_id
     }, function(err, bear) {
