@@ -10,6 +10,8 @@
         <script src="lib/moment-timezone-data.js"></script>
         <script src="helpers/myfirst_helper.js"></script>
         <script src="model/bear.js"></script>
+        <script src="view/bearlist.js"></script>
+        <script src="application.js"></script>
         <script>
             $(document).ready(test);
             function test() {
@@ -27,7 +29,7 @@
                 
                 Handlebars.registerPartial("description", $("#description").html());
                 
-                $("#1").html(theTemplate(theData));
+                //$("#1").html(theTemplate(theData));
                 
                 
                 // $("#2").append("<p>"+defaultMoment+"<p>").append("<p>"+new Date()+"</p>").append("<p>"+shanghaiMoment+"<p>");
