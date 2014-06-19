@@ -7,11 +7,11 @@
     });
 
     var bear = new Bear({
-        id : "539b8e8f6780e19514000001"
+        "id" : "539b8e8f6780e19514000001"
     });
     
     //Access-Control-Allow-Origin: "*"
 
     bear.fetch();
-    console.log(bear);
+    console.log(bear.toJSON());
 }).call(this);
