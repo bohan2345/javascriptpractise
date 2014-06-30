@@ -1,6 +1,8 @@
 <html>
     <head>
         <title>index</title>
+        <link type="text/css" href="lib/bootstrap/datepicker/css/datepicker.css" rel="stylesheet">
+        <link type="text/css" href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
         <script src="lib/jquery-1.9.0.min.js"></script>
         <script src="lib/underscore.js"></script>
         <script src="lib/backbone.js"></script>
@@ -9,52 +11,70 @@
         <script src="lib/moment-timezone.js"></script>
         <script src="lib/moment-timezone-data.js"></script>
         <script src="helpers/myfirst_helper.js"></script>
+        <script src="lib/bootstrap/datepicker/js/bootstrap-datepicker.js"></script>
+        <!-- <script>
+        var scriptSource = [];
+        scriptSource.push("lib/jquery-1.9.0.min.js");
+        scriptSource.push("lib/underscore.js");
+        scriptSource.push("lib/backbone.js");
+        scriptSource.push("lib/handlebars-v1.3.0.js");
+        scriptSource.push("lib/moment.js");
+        scriptSource.push("lib/moment-timezone.js");
+        scriptSource.push("lib/moment-timezone-data.js");
+        scriptSource.push("helpers/myfirst_helper.js");
+        scriptSource.push("lib/bootstrap/datepicker/js/bootstrap-datepicker.js");
+        scriptSource.push("model/bear.js");
+        scriptSource.push("view/bearlist.js");
+        scriptSource.push("application.js");
+        window.onload = function() {
+        var head = document.getElementsByTagName("head")[0];
+        var one = document.getElementById("script");
+        loadExternalScript(head, scriptSource);
+        };
+        function loadExternalScript(head, scriptSource) {
+        //console.log(one);
+        for ( i = 0; i < scriptSource.length; i++) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = scriptSource[i];
+        head.appendChild(script);
+        }
+        // if (scriptSource.length == 0)
+        // return;
+        // var script = document.createElement("script");
+        // script.type = "text/javascript";
+        // script.src = scriptSource.shift();
+        // head.appendChild(script);
+        // loadExternalScript(head, scriptSource);
+        }
+        </script> -->
+    </head>
+    <body>
+        <div id="app"></div>
+        <script id="bear-item" type="x-handlebars-template">
+            <td>id: {{ _id }}</td>
+            <td>name: {{ name }}</td>
+            <td>HP: {{ HP }}</td>
+            <td>attack: {{ attack }}</td>
+            <td><button>REMOVE</button></td>
+        </script>
+        <script id="new-bear-item" type="x-handlebars-template">
+            <tr>
+            <td>id: <input type="text" readonly="readonly" /></td>
+            <td>name: <input type="text" id="name" name="name" /></td>
+            <td>HP: <input type="number" id="HP" name="HP" /></td>
+            <td>attack: <input type="number" id="attack" name="attack" /></td>
+            <td><button>ADD</button></td>
+            </tr>
+        </script>
+        <!-- <script id="date-picker" type="x-handlebars-template">
+        <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
+        <input class="datepickerfield" size="16" type="text" readonly/>
+        <span class="add-on"><i class="icon-calendar"></i></span>
+        </div>
+        </script> -->
         <script src="model/bear.js"></script>
         <script src="view/bearlist.js"></script>
         <script src="application.js"></script>
-        <script>
-            $(document).ready(test);
-            function test() {
-                //alert($("#1").html());
-                var defaultMoment=moment().format("YYYY-MM-DD HH:mm:ss");
-                var shanghaiMoment=moment().tz("Asia/Shanghai").format("YYYY-MM-DD HH:mm:ss");
-                
-                var theData = {
-                    headerTitle : "Moment test",
-                    Time : defaultMoment,
-                    BeijingTime: shanghaiMoment
-                };
-
-                var theTemplate = Handlebars.compile($("#header").html());
-                
-                Handlebars.registerPartial("description", $("#description").html());
-                
-                //$("#1").html(theTemplate(theData));
-                
-                
-                // $("#2").append("<p>"+defaultMoment+"<p>").append("<p>"+new Date()+"</p>").append("<p>"+shanghaiMoment+"<p>");
-                
-                
-            }
-        </script>
-    </head>
-    <body>
-        <div id="1">
-            123
-        </div>
-        <script id="header" type="x-handlebars-template">
-            <div>
-            {{ headerTitle }}
-            </div>
-            {{> description}}<br />
-            {{ title }}
-        </script>
-        <script id="description" type="text/x-handlebars-template">
-            local time: {{Time}}<br />
-            Beijing time: {{BeijingTime}}
-        </script>
-        <!-- <div id='2'>
-            <p>Moment:</p>
-        </div> -->
     </body>
 </html>
